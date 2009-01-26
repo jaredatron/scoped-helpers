@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Mon Jan 26 02:30:11 -0800 2009</td>
+      <td>Mon Jan 26 10:34:00 -0800 2009</td>
     </tr>
     </table>
   </div>
@@ -105,7 +105,7 @@ After:
 </p>
 <pre>
   module AdminHelper
-    scoped_helper :admin do
+    scoped_helpers :admin do
       def form_for(*args, &amp;block)
         ...
       end
@@ -131,7 +131,7 @@ Run:
 Add this to you environment.rb
 </p>
 <pre>
-  config.gem 'scoped_helper'
+  config.gem 'scoped_helpers'
 </pre>
 <h2>LICENSE:</h2>
 <p>

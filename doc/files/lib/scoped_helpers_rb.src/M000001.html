@@ -10,9 +10,16 @@
   <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/scoped_helpers.rb, line 17</span>
+  <pre><span class="ruby-comment cmt"># File lib/scoped_helpers.rb, line 19</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scoped_helpers</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-    <span class="ruby-identifier">helper</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">ScopedHelper</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">helper</span> = <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">SCOPED_HELPERS</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span>
+        <span class="ruby-constant">SCOPED_HELPERS</span>[<span class="ruby-identifier">name</span>].<span class="ruby-identifier">class_eval</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+        <span class="ruby-constant">SCOPED_HELPERS</span>[<span class="ruby-identifier">name</span>]
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-constant">SCOPED_HELPERS</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">ScopedHelper</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">:define_method</span>, <span class="ruby-identifier">name</span> <span class="ruby-keyword kw">do</span>
       <span class="ruby-identifier">helper</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
     <span class="ruby-keyword kw">end</span>

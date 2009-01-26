@@ -25,7 +25,7 @@ Before:
 
 After:
   module AdminHelper
-    scoped_helper :admin do
+    scoped_helpers :admin do
       def form_for(*args, &block)
         ...
       end
@@ -46,7 +46,7 @@ Run:
   sudo gem install scoped_helper
 
 Add this to you environment.rb
-  config.gem 'scoped_helper'
+  config.gem 'scoped_helpers'
 
 == LICENSE:
 
