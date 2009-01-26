@@ -1,7 +1,7 @@
 # Used to parent all scoped helpers
 class ScopedHelper
   
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
   
   # requires an instance of ActionView::Base
   def initialize(base)
