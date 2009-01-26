@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+lib/scoped_helper.rb
+lib/scoped_helpers.rb
+test/test_scoped_helpers.rb
